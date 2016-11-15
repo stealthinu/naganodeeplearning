@@ -10,6 +10,7 @@ docker run -itd -p 8888:8888 -e PASSWORD=foobar tatsushid/alpine-py3-tensorflow-
 
 http://localhost:8888/
 
+!git clone https://github.com/stealthinu/naganodeeplearning
 !git clone https://github.com/enakai00/jupyter_tfbook
 !git clone https://github.com/oreilly-japan/deep-learning-from-scratch
 
