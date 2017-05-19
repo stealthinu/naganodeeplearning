@@ -1,0 +1,30 @@
+@import url('reveal.orig.css');
+
+.reveal .slides h1,
+.reveal .slides h2,
+.reveal .slides h3,
+.reveal .slides h4,
+.reveal .slides h5,
+.reveal .slides h6 {
+	-webkit-hyphens: auto;
+	   -moz-hyphens: auto;
+	        hyphens: auto;
+	word-wrap: break-word;
+	line-height: 1.2em;
+	text-transform: none;
+}
+
+.reveal .slides h1 { font-size: 2.0em; }
+.reveal .slides h2 { font-size: 1.5em; }
+.reveal .slides h3 { font-size: 1.2em; }
+.reveal .slides h4 { font-size: 1.0em; }
+
+.reveal .slides figure img {
+    border: 0px solid black;
+}
+
+.reveal section img {
+  margin: 15px 0px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 0px solid #000;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.15); }
