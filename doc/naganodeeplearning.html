@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="generator" content="pandoc">
+  <title></title>
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui">
+  <link rel="stylesheet" href="reveal.js/css/reveal.css">
+  <style type="text/css">code{white-space: pre;}</style>
+  <style type="text/css">
+div.sourceCode { overflow-x: auto; }
+table.sourceCode, tr.sourceCode, td.lineNumbers, td.sourceCode {
+  margin: 0; padding: 0; vertical-align: baseline; border: none; }
+table.sourceCode { width: 100%; line-height: 100%; }
+td.lineNumbers { text-align: right; padding-right: 4px; padding-left: 4px; color: #aaaaaa; border-right: 1px solid #aaaaaa; }
+td.sourceCode { padding-left: 5px; }
+code > span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code > span.dt { color: #902000; } /* DataType */
+code > span.dv { color: #40a070; } /* DecVal */
+code > span.bn { color: #40a070; } /* BaseN */
+code > span.fl { color: #40a070; } /* Float */
+code > span.ch { color: #4070a0; } /* Char */
+code > span.st { color: #4070a0; } /* String */
+code > span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code > span.ot { color: #007020; } /* Other */
+code > span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code > span.fu { color: #06287e; } /* Function */
+code > span.er { color: #ff0000; font-weight: bold; } /* Error */
+code > span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+code > span.cn { color: #880000; } /* Constant */
+code > span.sc { color: #4070a0; } /* SpecialChar */
+code > span.vs { color: #4070a0; } /* VerbatimString */
+code > span.ss { color: #bb6688; } /* SpecialString */
+code > span.im { } /* Import */
+code > span.va { color: #19177c; } /* Variable */
+code > span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code > span.op { color: #666666; } /* Operator */
+code > span.bu { } /* BuiltIn */
+code > span.ex { } /* Extension */
+code > span.pp { color: #bc7a00; } /* Preprocessor */
+code > span.at { color: #7d9029; } /* Attribute */
+code > span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code > span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code > span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code > span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+  </style>
+  <link rel="stylesheet" href="reveal.js/css/theme/black.css" id="theme">
+  <!-- Printing and PDF exports -->
+  <script>
+    var link = document.createElement( 'link' );
+    link.rel = 'stylesheet';
+    link.type = 'text/css';
+    link.href = window.location.search.match( /print-pdf/gi ) ? 'reveal.js/css/print/pdf.css' : 'reveal.js/css/print/paper.css';
+    document.getElementsByTagName( 'head' )[0].appendChild( link );
+  </script>
+  <!--[if lt IE 9]>
+  <script src="reveal.js/lib/js/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+  <div class="reveal">
+    <div class="slides">
+
+
+<section id="長野ディープラーニングハンズオン" class="slide level1">
+<h1>長野ディープラーニングハンズオン</h1>
+<ul>
+<li>2017/5/20</li>
+<li>NSEG / GEEKLAB.NAGANO</li>
+<li>さとうきよし</li>
+<li><span class="citation" data-cites="stealthinu">@stealthinu</span></li>
+<li>白馬在住</li>
+</ul>
+</section>
+<section id="スケジュールなど" class="slide level1">
+<h1>スケジュールなど</h1>
+<ul>
+<li>10:00-13:00 午前の部</li>
+<li>13:00-14:00 お昼休み</li>
+<li>14:00-17:00 午後の分</li>
+</ul>
+<p>だいたい1時間毎に小休憩の予定です。<br />
+わからないことについてはお気軽に言ってください。長くかかりそうな問題についてはTAの方と一緒に解決していきます。<br />
+ハッシュタグ「#nseg」でtweetしていただくと、後から拾ってフォローします。</p>
+</section>
+<section id="ハンズオンの主な内容" class="slide level1">
+<h1>ハンズオンの主な内容</h1>
+<ul>
+<li>人力ニューロンになってニューロンの学習方法を学ぶ</li>
+<li>パーセプトロンの実装</li>
+<li>バックプロパゲーションの学習方法の説明</li>
+<li>バックプロパゲーションの実装</li>
+<li>ディープラーニングで導入された手法の説明</li>
+<li>ネオコグニトロンの説明</li>
+<li>畳み込みニューラルネットワーク(CNN)の構造説明</li>
+<li>CNNの実装</li>
+<li>Kerasを利用してCNNの実装</li>
+</ul>
+</section>
+<section id="ハンズオンの方向性" class="slide level1">
+<h1>ハンズオンの方向性</h1>
+<ul>
+<li>ディープラーニング/ニューラルネットが動く原理を学ぶことが目的</li>
+<li>速度やシンプルさより理解しやすいコードを使う</li>
+<li>アルゴリズムの説明をなるべくそのまま実装する</li>
+<li>コンセプトは「ゼロから作るDeep Learning」と近い<br />
+https://www.oreilly.co.jp/books/9784873117584/<br />
+とても良書なのでおすすめです</li>
+</ul>
+</section>
+<section id="そもそもどうして-ハンズオンをやるのか" class="slide level1">
+<h1>そもそもどうして<br>ハンズオンをやるのか</h1>
+<ul>
+<li>僕がニューラルネットワーク好きだから<br />
+第２期ニューラルネットブームのときにニューロやりたくて大学に入る<br />
+が大学でスキーにはまり研究には打ち込まず白馬に移住して現在に至る</li>
+<li>仕組みがわからないとサンプルは動かせてもそこから先どうしたらいいかわからない…</li>
+<li>どうして学習出来るのか仕組みを理解してもらいたい</li>
+</ul>
+</section>
+<section id="画風変換" class="slide level1">
+<h1>画風変換</h1>
+<p>『画風を変換するアルゴリズム』<br />
+https://research.preferred.jp/2015/09/chainer-gogh/</p>
+<p><img src="gafu_src.png" height="300"> → <img src="gafu_dst.png" height="300"></p>
+<ul>
+<li>『画風変換動画』https://www.youtube.com/watch?v=Khuj4ASldmU<br />
+</li>
+<li>『Prisma』http://www.prisma-ai.com/</li>
+</ul>
+</section>
+<section id="線画着色" class="slide level1">
+<h1>線画着色</h1>
+<p>『初心者がchainerで線画着色してみた。わりとできた。』<br />
+http://qiita.com/taizan/items/cf77fd37ec3a0bef5d9d</p>
+<p><img src="paintchainer.jpeg" height="300"></p>
+<ul>
+<li>『PaintsChainer』https://paintschainer.preferred.tech/index_ja.html</li>
+</ul>
+</section>
+<section id="テキストから画像生成" class="slide level1">
+<h1>テキストから画像生成</h1>
+<p>『StackGAN』<br />
+https://arxiv.org/abs/1612.03242</p>
+<p>「This bird is gray with white on its chest<br> and has a very short beak」<br />
+<img src="stackgan_sample.png" height="300"></p>
+</section>
+<section id="ディープラーニングの位置" class="slide level1">
+<h1>ディープラーニングの位置</h1>
+<p><img src="deeplearning_position.png" height="500"></p>
+</section>
+<section id="ディープラーニングの位置2" class="slide level1">
+<h1>ディープラーニングの位置2</h1>
+<ul>
+<li>広義のAI</li>
+<li>機械学習 ←→ エキスパートシステム
+<ul>
+<li>エキスパートシステム<br />
+ルールを与えて「演繹的」に知能を作ろうとした</li>
+<li>機械学習<br />
+多数の事例から「帰納的」に自分でルールを見つける</li>
+</ul></li>
+<li>ニューラルネットワーク<br />
+生物の神経細胞の動きをまねて認識などの処理を行なう</li>
+<li>ディープラーニング<br />
+深い層を持つニューラルネットワーク</li>
+</ul>
+</section>
+<section id="ニューロン" class="slide level1">
+<h1>ニューロン</h1>
+<figure>
+<img src="neuron.png" alt="ニューロン" /><figcaption>ニューロン</figcaption>
+</figure>
+<ul>
+<li>神経細胞の模式図</li>
+<li>ヘッブの学習則<br />
+「ニューロンの発火により繋がったニューロンが発火すると結合が強化される」</li>
+</ul>
+</section>
+<section id="パーセプトロン" class="slide level1">
+<h1>パーセプトロン</h1>
+<p><img src="formal_neuron.png" alt="ニューロンのモデル" /> <img src="perceptron.png" alt="パーセプトロン概念図" /></p>
+<ul>
+<li>ニューロンという神経細胞モデルで脳をモデル化</li>
+<li>最初期のニューラルネットワーク</li>
+<li>基本的な学習方法はディープラーニングもだいたい同じ</li>
+</ul>
+</section>
+<section id="バックプロパゲーション" class="slide level1">
+<h1>バックプロパゲーション</h1>
+<p><img src="backpropagation.png" height="300"></p>
+<ul>
+<li>パーセプトロンを多層にしても学習可能にした</li>
+<li>教師信号が出力層から入力層へ向かって伝搬していくのでバックプロパゲーションと呼ばれる</li>
+</ul>
+</section>
+<section id="ディープラーニング" class="slide level1">
+<h1>ディープラーニング</h1>
+<p><img src="cnn.png" height="200"></p>
+<ul>
+<li>バックプロパゲーションを単に多層にしてもうまく学習が収束しなかった</li>
+<li>技術的工夫により超多層でも収束するようになった</li>
+<li>畳み込みニューラルネット(CNN)は画像認識でよく使われている</li>
+</ul>
+</section>
+<section id="マッチ箱の脳を演習" class="slide level1">
+<h1>「マッチ箱の脳」を演習</h1>
+<ul>
+<li>手で計算</li>
+<li>紙か表計算上に書いてく</li>
+<li>最初の２、３回はみんなで一緒にやる</li>
+<li>終わったらみんなで検算する</li>
+<li>注意点
+<ul>
+<li>パラメータが１つで個数を変更するモデルでやる</li>
+<li>単にグラフの傾きを修正してるにすぎないことが理解出来る</li>
+<li>パラメータが２つで個数を変更し超平面の意識をもたす</li>
+<li>線形分離しか出来ないことを説明</li>
+</ul></li>
+</ul>
+</section>
+<section id="ニューロンの出力" class="slide level1">
+<h1>ニューロンの出力</h1>
+<p><img src="formal_neuron.png" alt="ニューロンのモデル" /> - 形式ニューロン - w：重み（実数） - x：入力信号（0 または 1） - h：しきい値（実数） - H：活性化関数（出力は 0 または 1） - y：出力信号（0 または 1） - y = H(∑wi<em>xi−h) - W = (w0 w1 ... wi) - X = (x0 x1 ... xi) - y = H(W</em>X-h)</p>
+</section>
+<section id="学習方法" class="slide level1">
+<h1>学習方法</h1>
+<ul>
+<li>出力と教師信号の差分を出す</li>
+<li>差分を入力の大きさに応じて重みに足す</li>
+<li>つまり誤差をその責任に応じて重みを修正する</li>
+</ul>
+</section>
+<section id="パーセプトロンについて説明追加" class="slide level1">
+<h1>パーセプトロンについて説明追加</h1>
+<ul>
+<li>パーセプトロンで1960年代に第1次ニューラルネットブームが起こる</li>
+<li>ミンスキーとパパートがパーセプトロンではXORの学習が出来ないことを指摘</li>
+<li>小脳パーセプトロン説</li>
+</ul>
+</section>
+<section id="dockerとハンズオン用イメージ導入" class="slide level1">
+<h1>dockerとハンズオン用イメージ導入</h1>
+<p>dockerインストール後、ハンズオン用イメージを使ってコンテナを動かします。<br />
+下記コマンドでポート8888でパスワードfoobarでコンテナが起動します。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="ex">docker</span> run -itd -p 8888:8888 -e PASSWORD=foobar stealthinu/alpine-py3-tensorflow-jupyter-datasets</code></pre></div>
+<p>その後、ブラウザで下記URLに接続するとJupyterの表示がされます。</p>
+<p>Docker for Windows/Mac やLinuxのDockerの場合</p>
+<p>http://localhost:8888/</p>
+<p>DockerToolboxを理容している場合（接続IPアドレスは docker-machine ip で確認出来ます）</p>
+<p>http://192.168.99.100:8888/</p>
+<p>パスワードが求められるので、先のdocker runで指定したPASSWORDの値、ここでは「foobar」を入力するとJupyterにログイン出来ます。</p>
+<p>右端「New」ボタンから「Terminal」を選択してターミナルを出します。<br />
+下記コマンドでgit cloneを実行すると、ハンズオン準備勉強会用に作っているリポジトリがコピーされます。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">git</span> clone https://github.com/stealthinu/naganodeeplearning</code></pre></div>
+<p>ハンズオンで色々とソースを変更しますので、ブランチを切っておくと良いでしょう。</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">git</span> branch handson
+<span class="fu">git</span> checkout handson</code></pre></div>
+<p>参考文献のソースもついでに</p>
+<div class="sourceCode"><pre class="sourceCode sh"><code class="sourceCode bash"><span class="fu">git</span> clone https://github.com/enakai00/jupyter_tfbook
+<span class="fu">git</span> clone https://github.com/oreilly-japan/deep-learning-from-scratch</code></pre></div>
+</section>
+<section id="バックプロパゲーション-1" class="slide level1">
+<h1>バックプロパゲーション</h1>
+<h2 id="しきい値の一般化">しきい値の一般化</h2>
+<ul>
+<li>しきい値bを固定の入力値と考えればbの項を無くせる（※図示）</li>
+<li>入力x0に1固定としw0をbとして考える</li>
+<li>他のwと同様に学習させることでbの学習が可能になる</li>
+<li>実装の修正</li>
+</ul>
+<h2 id="活性化関数をアナログにする">活性化関数をアナログにする</h2>
+<ul>
+<li>実は直線だと逆に性能が悪くなる</li>
+<li>非線形である必要がある</li>
+<li>階段関数に似ているシグモイド関数（※図示）</li>
+<li>シグモイド関数は微分が簡単</li>
+<li>微分が簡単で嬉しいのは学習手法からの要請</li>
+<li>実装の修正</li>
+</ul>
+<h2 id="学習を一般化する">学習を一般化する</h2>
+<ul>
+<li>学習する＝教師信号との誤差を最小化する</li>
+<li>誤差の２乗和をエネルギー関数Eと呼んでこれを最小化</li>
+<li>Eのグラフのイメージ（※図示）</li>
+<li>坂の低い方へ転がせばEが小さくなる</li>
+<li>微分してマイナスになる方向にパラメータを変更する</li>
+<li>偏微分の式</li>
+<li>パーセプトロンの式との比較</li>
+<li>活性化関数を微分したh'が掛けられるようになっただけ</li>
+<li>活性化関数が微分できる必要がある（だから階段関数は使えない）</li>
+<li>勾配降下法（最急降下法）</li>
+</ul>
+<h2 id="多段にする">多段にする</h2>
+<ul>
+<li>入力層、中間層、出力層と新しく中間層が増える</li>
+<li>中間層の誤差をどうやって決めるか</li>
+<li>前段の誤差から自分の責任で出た誤差の総和</li>
+<li>前段ニューロンの誤差にそこへの重みを掛けてたものの総和（※図示）</li>
+<li>前段の誤差を残しておけば機械的にエレガントに計算できる</li>
+<li>教科書に乗ってるのはこのエレガントな計算式</li>
+</ul>
+<h2 id="実装して色々試す">実装して色々試す</h2>
+<ul>
+<li>活性化関数をシグモイドの他に、線形、tanh、ReLUあたりで試す</li>
+<li>層を増やす4層、5層として多層にして収束しないことを見る</li>
+<li>多層にしてもtanhやReLUならば収束する？</li>
+</ul>
+</section>
+    </div>
+  </div>
+
+  <script src="reveal.js/lib/js/head.min.js"></script>
+  <script src="reveal.js/js/reveal.js"></script>
+
+  <script>
+
+      // Full list of configuration options available at:
+      // https://github.com/hakimel/reveal.js#configuration
+      Reveal.initialize({
+
+        // Optional reveal.js plugins
+        dependencies: [
+          { src: 'reveal.js/lib/js/classList.js', condition: function() { return !document.body.classList; } },
+          { src: 'reveal.js/plugin/zoom-js/zoom.js', async: true },
+              { src: 'reveal.js/plugin/notes/notes.js', async: true }
+        ]
+      });
+    </script>
+    </body>
+</html>
